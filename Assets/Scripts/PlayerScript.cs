@@ -2,12 +2,18 @@
 using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
+    float moveSpeed;
+    Quaternion rotation;
+    float rotationSpeed;
 	int playerState;
 	Vector3 pos;
+
 	// Use this for initialization
 	void Start () {
 		playerState = 1;
-	}
+        moveSpeed = 2.0f;
+        rotationSpeed = 0.5f;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -38,6 +44,8 @@ public class PlayerScript : MonoBehaviour {
 		}
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
+        rotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        //transform.position = Vector3.MoveTowards(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), moveSpeed * Time.deltaTime); //Not a Core Mechanic just me trying out some stuff
     }
 }
