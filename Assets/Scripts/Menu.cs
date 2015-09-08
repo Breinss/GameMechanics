@@ -16,5 +16,7 @@ public class Menu : MonoBehaviour {
     public void btnClicked()
     {
         Time.timeScale = 1;
+        
+        print(Application.loadedLevelName);
     }
 }

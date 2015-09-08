@@ -22,8 +22,7 @@ public class EnemyScript : MonoBehaviour {
 
         if(transform.position == playerPos.transform.position)
         {
-            Time.timeScale = 0;
-            canvas.SetActive(true);
+            Application.LoadLevel(Application.loadedLevelName);
             print("We have been hit!");
         }
     }
