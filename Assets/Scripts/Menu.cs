@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Menu : MonoBehaviour {
-
 	// Use this for initialization
 	void Start () {
         Time.timeScale = 0;
@@ -16,7 +15,6 @@ public class Menu : MonoBehaviour {
     public void btnClicked()
     {
         Time.timeScale = 1;
-        
         print(Application.loadedLevelName);
     }
 }
