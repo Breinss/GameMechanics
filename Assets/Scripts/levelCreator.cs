@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class levelCreator : MonoBehaviour {
+public class LevelCreator : MonoBehaviour {
 
 	// Use this for initialization
-	private GameObject tilePos;
+	public GameObject tilePos;
 	private float startUpPosY;
     private const float tileWidth = 0.69f;
 	private int heightLevel = 0;
@@ -22,7 +22,6 @@ public class levelCreator : MonoBehaviour {
     private string lastTile = "right";
 
 	void Start () {
-		Time.timeScale = 1;
 		gameLayer = GameObject.Find ("GameLayer");
         bgLayer = GameObject.Find("BackgroundLayer");
 
