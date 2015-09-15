@@ -44,7 +44,7 @@ public class levelCreator : MonoBehaviour {
 
 		tilePos = GameObject.Find ("startTile");
 		startUpPosY = tilePos.transform.position.y;
-	    outOfBoundsX = tilePos.transform.position.x - 5.6f;
+	    outOfBoundsX = tilePos.transform.position.x - 7.65f;
 
 		fillScene ();
 	}
@@ -152,7 +152,7 @@ public class levelCreator : MonoBehaviour {
 
     private void changeHeight()
     {
-        int newHeightLevel = (int) Random.Range(0, 4);
+        int newHeightLevel = (int)Random.Range(0, 4);
         if (newHeightLevel < heightLevel) heightLevel--;
         else if (newHeightLevel > heightLevel) heightLevel++;
 
