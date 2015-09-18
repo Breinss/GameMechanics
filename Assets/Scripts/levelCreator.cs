@@ -8,7 +8,7 @@ public class LevelCreator : MonoBehaviour {
 	private float startUpPosY;
     private const float tileWidth = 0.69f;
 	private int heightLevel = 0;
-	private GameObject tmpTile;
+	public GameObject tmpTile;
 
 
 	private GameObject collectedTiles;
@@ -50,7 +50,7 @@ public class LevelCreator : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        gameLayer.transform.position = new Vector2(gameLayer.transform.position.x - gameSpeed*Time.deltaTime,0);
+        gameLayer.transform.position = new Vector2(gameLayer.transform.position.x - gameSpeed * Time.deltaTime, startUpPosY);
         bgLayer.transform.position = new Vector2(bgLayer.transform.position.x - gameSpeed/4 * Time.deltaTime, 0);
 
         foreach (Transform child in gameLayer.transform)

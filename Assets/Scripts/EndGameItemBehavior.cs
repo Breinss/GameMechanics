@@ -1,21 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EndGameItemBehavior : MonoBehaviour {
-
+public class EndGameItemBehavior : MonoBehaviour
+{
+    private float speed;
+    private RewardCreator _rewardCreator;
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+	    speed = 2f;
+	    _rewardCreator = GameObject.Find("Main Camera").GetComponent<RewardCreator>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void FixedUpdate () {
+       transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, 0);
 	}
 
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Player")
-            Application.LoadLevel(Application.loadedLevelName);
+        {
+            _rewardCreator.isInPlay = false;
+        }
+
     }
 }

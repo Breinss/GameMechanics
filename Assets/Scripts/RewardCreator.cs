@@ -1,49 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RewardCreator : MonoBehaviour {
-    private GameObject collectedTiles;
-    private GameObject tmpTile;
-    private GameObject gameLayer;
-    private float timeLeft;
-    private bool endPowerUpSpawned;
-    private LevelCreator levelCreator;
+public class RewardCreator : MonoBehaviour
+{
+    private float minY;
+    private float maxX;
+    private float maxY;
+    public bool isInPlay;
+    private GameObject tempTilePos;
+    private LevelCreator _levelCreator;
+    private GameObject _reward;
+    private GameObject _player;
+
 	// Use this for initialization
-	void Start ()
-	{
-	    levelCreator = GameObject.Find("Main Camera").GetComponent<LevelCreator>();
-	    endPowerUpSpawned = false;
-	    timeLeft = 60f;
-        gameLayer = GameObject.Find("GameLayer");
-        collectedTiles = GameObject.Find("Rewards");
-
-
-	    for (int i = 0; i < 2; i++)
-	    {
-	        GameObject tmpg1 = Instantiate(Resources.Load("end_game", typeof (GameObject))) as GameObject;
-	        tmpg1.transform.parent = collectedTiles.transform.FindChild("EndGame").transform;
-	    }
-        collectedTiles.transform.position = new Vector2(-60.0f, -20.0f);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        timeLeft -= Time.deltaTime;
-        if (timeLeft <= 15 && !endPowerUpSpawned)
-        {
-            endPowerUpSpawned = true;
-            setTile("endgame");
-        }
-	}
-    public void setTile(string type)
+    private void Start()
     {
-        switch (type)
+        _player = GameObject.Find("Player");
+        _reward = GameObject.Find("reward");
+        isInPlay = true;
+        minY = 2.5f;
+        maxY = 4f;
+        maxX = 7.5f;
+    }
+
+    private void FixedUpdate()
+    {
+        if (!isInPlay)
         {
-            case "endgame":
-                tmpTile = collectedTiles.transform.FindChild("EndGame").transform.GetChild(0).gameObject;
-                break;
+            reSpawn();
         }
-        tmpTile.transform.parent = gameLayer.transform;
-        tmpTile.transform.position = new Vector2(levelCreator.tilePos.transform.position.x, (int)Random.Range(1, 3));
+        if (_reward.transform.position.x < _player.transform.position.x - maxX)
+        {
+            reSpawn();
+        }
+    }
+
+    private void reSpawn()
+    {
+         tempTilePos = GetComponent<LevelCreator>().tmpTile;
+         _reward.transform.position = new Vector3(tempTilePos.transform.position.x, tempTilePos.transform.position.y + (float)Random.Range(minY,maxY),tempTilePos.transform.position.z);
+         isInPlay = true;
     }
 }
