@@ -6,8 +6,8 @@ public class PlayerScript : MonoBehaviour {
     Quaternion rotation;
     float rotationSpeed;
     int playerState;
-	Rigidbody2D rigidBody2D;
-    private bool showStartGUI;
+	public Rigidbody2D rigidBody2D;
+    public bool showStartGUI;
     private bool countDownGUI;
     private float countDownTime;
     private bool startCountDown;
@@ -61,11 +61,11 @@ public class PlayerScript : MonoBehaviour {
 
         if (showStartGUI)
         {
-            GUI.Label(new Rect(10, 10, 1000, 20), "Press Space to Start the Game! & To reverse gravity (╯°□°）╯︵ ┻━┻");
+            GUI.Label(new Rect(10, 10, 1000, 20), "Press Space to Start the Game! & To reverse gravity (╯°□°）╯︵ ┻━┻, You win when your score is 50");
         }
         if (countDownGUI)
         {
-            GUI.Label(new Rect(10, 10, 1000, 20), "Time Remaining: " + (int)countDownTime);
+            GUI.Label(new Rect(10, 25, 1000, 20), "Time Remaining: " + (int)countDownTime);
 
         }
 

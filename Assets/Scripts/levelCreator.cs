@@ -15,7 +15,7 @@ public class LevelCreator : MonoBehaviour {
 	private GameObject gameLayer;
 	private GameObject bgLayer;
 
-    private float gameSpeed = 2.0f;
+    public float gameSpeed = 2.0f;
     private float outOfBoundsX;
     private int blankCounter = 0;
     private int middleCounter = 0;

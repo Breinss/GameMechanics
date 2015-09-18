@@ -18,8 +18,8 @@ public class RewardCreator : MonoBehaviour
         _player = GameObject.Find("Player");
         _reward = GameObject.Find("reward");
         isInPlay = true;
-        minY = 2.5f;
-        maxY = 4f;
+        minY = 4f;
+        maxY = 6f;
         maxX = 7.5f;
     }
 
